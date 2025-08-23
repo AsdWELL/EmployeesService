@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesService.Api", "Emp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeService.Domain", "EmployeeService.Domain\EmployeeService.Domain.csproj", "{39B254D8-49A1-4606-8919-0A80AA46BF18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeService.Application", "EmployeeService.Application\EmployeeService.Application.csproj", "{903D03C2-0739-4BA4-B46D-0BFB5A40576E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{39B254D8-49A1-4606-8919-0A80AA46BF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39B254D8-49A1-4606-8919-0A80AA46BF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39B254D8-49A1-4606-8919-0A80AA46BF18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{903D03C2-0739-4BA4-B46D-0BFB5A40576E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{903D03C2-0739-4BA4-B46D-0BFB5A40576E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903D03C2-0739-4BA4-B46D-0BFB5A40576E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{903D03C2-0739-4BA4-B46D-0BFB5A40576E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

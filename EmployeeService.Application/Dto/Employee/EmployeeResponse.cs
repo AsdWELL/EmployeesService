@@ -1,6 +1,6 @@
-﻿using EmployeeService.Application.Dto;
-using EmployeeService.Application.Dto.Company;
+﻿using EmployeeService.Application.Dto.Company;
 using EmployeeService.Application.Dto.Department;
+using EmployeeService.Application.Dto.Passport;
 
 namespace EmployeeService.Domain.Dto.Employee
 {
@@ -37,7 +37,7 @@ namespace EmployeeService.Domain.Dto.Employee
         /// <summary>
         /// Паспорт
         /// </summary>
-        public PassportDto Passport { get; set; }
+        public PassportResponse Passport { get; set; }
 
         /// <summary>
         /// Отдел

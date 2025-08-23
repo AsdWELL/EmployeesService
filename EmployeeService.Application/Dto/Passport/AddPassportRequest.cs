@@ -1,9 +1,9 @@
-﻿namespace EmployeeService.Application.Dto
+﻿namespace EmployeeService.Application.Dto.Passport
 {
     /// <summary>
-    /// Модель запроса на довабление паспорта
+    /// Модель запроса на добавление паспорта
     /// </summary>
-    public class PassportDto
+    public class AddPassportRequest
     {
         /// <summary>
         /// Тип

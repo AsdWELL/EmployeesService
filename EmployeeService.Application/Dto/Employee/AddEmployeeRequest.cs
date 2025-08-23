@@ -1,11 +1,11 @@
-﻿using EmployeeService.Application.Dto;
+﻿using EmployeeService.Application.Dto.Passport;
 
 namespace EmployeeService.Domain.Dto.Employee
 {
     /// <summary>
     /// Модель запроса на добавление сотрудника
     /// </summary>
-    public class AddEmployeeRequestt
+    public class AddEmployeeRequest
     {
         /// <summary>
         /// Имя
@@ -28,9 +28,9 @@ namespace EmployeeService.Domain.Dto.Employee
         public int CompanyId { get; set; }
 
         /// <summary>
-        /// Паспорта
+        /// Паспорт
         /// </summary>
-        public PassportDto Passport { get; set; }
+        public AddPassportRequest Passport { get; set; }
 
         /// <summary>
         /// Идентификатор отдела

@@ -1,4 +1,4 @@
-﻿using EmployeeService.Application.Dto;
+﻿using EmployeeService.Application.Dto.Passport;
 
 namespace EmployeeService.Domain.Dto.Employee
 {
@@ -35,7 +35,7 @@ namespace EmployeeService.Domain.Dto.Employee
         /// <summary>
         /// Паспорт
         /// </summary>
-        public PassportDto? Passport { get; set; }
+        public AddPassportRequest? Passport { get; set; }
 
         /// <summary>
         /// Идентификатор отдела
