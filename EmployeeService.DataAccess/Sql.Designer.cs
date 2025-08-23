@@ -275,6 +275,42 @@ namespace EmployeeService.DataAccess {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на SELECT EXISTS(
+        ///	SELECT 1 FROM &quot;Companies&quot;
+        ///	WHERE &quot;Id&quot; = 1
+        ///).
+        /// </summary>
+        internal static string IsCompanyExists {
+            get {
+                return ResourceManager.GetString("IsCompanyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SELECT EXISTS(
+        ///	SELECT 1 FROM &quot;Departments&quot;
+        ///	WHERE &quot;Id&quot; = 1
+        ///).
+        /// </summary>
+        internal static string IsDepartmentExists {
+            get {
+                return ResourceManager.GetString("IsDepartmentExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SELECT EXISTS(
+        ///	SELECT 1 FROM &quot;Employees&quot;
+        ///	WHERE &quot;Id&quot; = 1
+        ///).
+        /// </summary>
+        internal static string IsEmployeeExists {
+            get {
+                return ResourceManager.GetString("IsEmployeeExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на UPDATE &quot;Companies&quot;
         ///SET 
         ///    &quot;Name&quot; = COALESCE(@Name, &quot;Name&quot;)

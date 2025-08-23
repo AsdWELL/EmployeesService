@@ -9,7 +9,7 @@ namespace EmployeeService.Application.Validators
             string fieldName = "Passport Type";
 
             Ensure.StringNotEmpty(passportType, fieldName);
-            Ensure.ContainsOnlyLetters(passportType, fieldName);
+            Ensure.MustNotContainDigits(passportType, fieldName);
         }
         
         private static void ValidatePassportNumber(string passportNumber)

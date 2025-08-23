@@ -42,23 +42,23 @@ namespace EmployeeService.Application.Validators
             StringNotEmpty(value, fieldName);
 
             if (!value!.All(char.IsDigit))
-                throw new InvalidFieldValueException($"Поле '{fieldName}' должно состоять только из чисел");
+                throw new InvalidFieldValueException($"Поле '{fieldName}' должно состоять только из цифр");
         }
 
         /// <summary>
         /// Проверяет, что строка содержит только буквы
         /// </summary>
         /// <exception cref="InvalidFieldValueException"></exception>
-        public static void ContainsOnlyLetters(string? value, string fieldName)
+        public static void MustNotContainDigits(string? value, string fieldName)
         {
             StringNotEmpty(value, fieldName);
 
-            if (!value!.All(char.IsLetter))
-                throw new InvalidFieldValueException($"Поле '{fieldName}' должно состоять только из букв");
+            if (value!.Any(char.IsDigit))
+                throw new InvalidFieldValueException($"Поле '{fieldName}' не может содержать цифр");
         }
 
         /// <summary>
-        /// Проверяет, что длина строки равна указанной
+        /// Проверяет, что длина строки равна указанной длине
         /// </summary>
         /// <exception cref="InvalidFieldValueException"></exception>
         public static void HasLength(string? value, string fieldName, int length)

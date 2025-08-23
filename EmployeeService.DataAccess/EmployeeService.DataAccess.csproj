@@ -7,7 +7,43 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Migrations\01_CreateDepartments.sql" />
+    <None Remove="Migrations\02_CreatePassports.sql" />
+    <None Remove="Migrations\03_CreateCompanies.sql" />
+    <None Remove="Migrations\04_CreateEmployees.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\01_CreateDepartments.sql" />
+    <EmbeddedResource Include="Migrations\02_CreatePassports.sql" />
+    <EmbeddedResource Include="Migrations\03_CreateCompanies.sql" />
+    <EmbeddedResource Include="Migrations\04_CreateEmployees.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="dbup-postgresql" Version="6.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.8" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EmployeeService.Domain\EmployeeService.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Sql.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Sql.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Sql.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sql.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

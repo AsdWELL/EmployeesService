@@ -7,7 +7,7 @@ namespace EmployeeService.Application.Validators
         private static void ValidateEmployeeNamePart(string value, string fieldName)
         {
             Ensure.StringNotEmpty(value, fieldName);
-            Ensure.ContainsOnlyLetters(value, fieldName);
+            Ensure.MustNotContainDigits(value, fieldName);
         }
 
         private static void ValidateEmployeeName(string employeeName) => ValidateEmployeeNamePart(employeeName, "Employee Name");

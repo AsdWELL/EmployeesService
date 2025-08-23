@@ -169,6 +169,15 @@
   <data name="GetPassportById" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>SqlScripts\Passport\GetPassportById.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="IsCompanyExists" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>SqlScripts\Company\IsCompanyExists.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="IsDepartmentExists" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>SqlScripts\Department\IsDepartmentExists.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="IsEmployeeExists" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>SqlScripts\Employee\IsEmployeeExists.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="UpdateCompany" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>SqlScripts\Company\UpdateCompany.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

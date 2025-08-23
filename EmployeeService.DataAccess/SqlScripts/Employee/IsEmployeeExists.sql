@@ -1,0 +1,4 @@
+﻿SELECT EXISTS(
+	SELECT 1 FROM "Employees"
+	WHERE "Id" = 1
+)
