@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS "Departments" (
+	"Id" SERIAL PRIMARY KEY,
+	"Name" TEXT NOT NULL,
+	"Phone" TEXT NOT NULL
+);
