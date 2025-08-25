@@ -5,6 +5,7 @@ using EmployeeService.Application.Mappers;
 using EmployeeService.Application.Validators;
 using EmployeeService.DataAccess.Interfaces.Repositories;
 using EmployeeService.Domain.Entities;
+using System.Transactions;
 
 namespace EmployeeService.Application.Services
 {
@@ -23,27 +24,33 @@ namespace EmployeeService.Application.Services
             return employee.MapToDto(company, passport, department);
         }
 
-        private async Task<List<EmployeeResponse>> BuildEmployeeResponseList(List<Employee> employees)
+        private async IAsyncEnumerable<EmployeeResponse> BuildEmployeeResponseList(List<Employee> employees)
         {
-            var employeeResponses = await Task.WhenAll(employees.Select(BuildEmployeeResponse));
-
-            return [.. employeeResponses];
+            foreach (var employee in employees)
+                yield return await BuildEmployeeResponse(employee);
         }
 
         public async Task<int> AddEmployee(AddEmployeeRequest request)
         {
             request.ValidateAddRequest();
-            
-            var passportId = await passportRepository.AddPassport(request.Passport.MapToDomain());
 
-            return await employeeRepository.AddEmployee(request.MapToDomain(passportId));
+            using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                var passportId = await passportRepository.AddPassport(request.Passport.MapToDomain());
+
+                var employeeId = await employeeRepository.AddEmployee(request.MapToDomain(passportId));
+
+                transactionScope.Complete();
+
+                return employeeId;
+            }
         }
 
         public async Task<List<EmployeeResponse>> GetAllEmployees()
         {
             var employees = await employeeRepository.GetAllEmployees();
 
-            return await BuildEmployeeResponseList(employees);
+            return await BuildEmployeeResponseList(employees).ToListAsync();
         }
 
         public async Task<EmployeeResponse> GetEmployeeById(int id)
@@ -58,33 +65,38 @@ namespace EmployeeService.Application.Services
         {
             var employees = await employeeRepository.GetEmployeesByCompanyId(companyId);
 
-            return await BuildEmployeeResponseList(employees);
+            return await BuildEmployeeResponseList(employees).ToListAsync();
         }
 
         public async Task<List<EmployeeResponse>> GetEmployeesByCompanyIdAndDepartmentId(int companyId, int departmentId)
         {
             var employees = await employeeRepository.GetEmployeesByCompanyIdAndDepartmentId(companyId, departmentId);
 
-            return await BuildEmployeeResponseList(employees);
+            return await BuildEmployeeResponseList(employees).ToListAsync();
         }
 
         public async Task UpdateEmployee(UpdateEmployeeRequest request)
         {
+            request.ValidateUpdateRequest();
+
             var oldEmployee = await employeeRepository.GetEmployeeById(request.Id)
                 ?? throw new EmployeeNotFoundException(request.Id);
 
-            request.ValidateUpdateRequest();
-
-            int? passportId = null;
-
-            if (request.Passport != null)
+            using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
-                passportId = await passportRepository.AddPassport(request.Passport.MapToDomain());
+                int? passportId = null;
 
-                await passportRepository.DeletePassportById(oldEmployee.PassportId);
+                if (request.Passport != null)
+                {
+                    passportId = await passportRepository.AddPassport(request.Passport.MapToDomain());
+
+                    await passportRepository.DeletePassportById(oldEmployee.PassportId);
+                }
+
+                await employeeRepository.UpdateEmployee(request.MapToDomain(passportId));
+
+                transactionScope.Complete();
             }
-
-            await employeeRepository.UpdateEmployee(request.MapToDomain(passportId));
         }
 
         public async Task DeleteEmployeeById(int id)
@@ -92,9 +104,14 @@ namespace EmployeeService.Application.Services
             var oldEmployee = await employeeRepository.GetEmployeeById(id)
                 ?? throw new EmployeeNotFoundException(id);
 
-            await employeeRepository.DeleteEmployeeById(id);
+            using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                await employeeRepository.DeleteEmployeeById(id);
 
-            await passportRepository.DeletePassportById(oldEmployee.PassportId);
+                await passportRepository.DeletePassportById(oldEmployee.PassportId);
+                
+                transactionScope.Complete();
+            }
         }
     }
 }

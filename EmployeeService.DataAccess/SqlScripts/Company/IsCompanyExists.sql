@@ -1,4 +1,4 @@
 ﻿SELECT EXISTS(
 	SELECT 1 FROM "Companies"
-	WHERE "Id" = 1
+	WHERE "Id" = @Id
 )

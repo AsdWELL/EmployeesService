@@ -61,7 +61,7 @@ namespace EmployeeService.DataAccess {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на INSERT INTO Companies (&quot;Name&quot;, &quot;Inn&quot;)
+        ///   Ищет локализованную строку, похожую на INSERT INTO &quot;Companies&quot; (&quot;Name&quot;, &quot;Inn&quot;)
         ///VALUES (@Name, @Inn)
         ///RETURNING &quot;Id&quot;.
         /// </summary>
@@ -277,7 +277,7 @@ namespace EmployeeService.DataAccess {
         /// <summary>
         ///   Ищет локализованную строку, похожую на SELECT EXISTS(
         ///	SELECT 1 FROM &quot;Companies&quot;
-        ///	WHERE &quot;Id&quot; = 1
+        ///	WHERE &quot;Id&quot; = @Id
         ///).
         /// </summary>
         internal static string IsCompanyExists {
@@ -289,7 +289,7 @@ namespace EmployeeService.DataAccess {
         /// <summary>
         ///   Ищет локализованную строку, похожую на SELECT EXISTS(
         ///	SELECT 1 FROM &quot;Departments&quot;
-        ///	WHERE &quot;Id&quot; = 1
+        ///	WHERE &quot;Id&quot; = @Id
         ///).
         /// </summary>
         internal static string IsDepartmentExists {
@@ -301,7 +301,7 @@ namespace EmployeeService.DataAccess {
         /// <summary>
         ///   Ищет локализованную строку, похожую на SELECT EXISTS(
         ///	SELECT 1 FROM &quot;Employees&quot;
-        ///	WHERE &quot;Id&quot; = 1
+        ///	WHERE &quot;Id&quot; = @Id
         ///).
         /// </summary>
         internal static string IsEmployeeExists {

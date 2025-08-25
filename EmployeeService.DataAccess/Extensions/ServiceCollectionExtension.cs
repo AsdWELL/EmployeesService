@@ -65,7 +65,9 @@ namespace EmployeeService.DataAccess.Extensions
         /// <returns></returns>
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            return services.AddScoped<IPassportRepository, PassportRepository>()
+            return services
+                .AddScoped<ICompanyRepository, CompanyRepository>()
+                .AddScoped<IPassportRepository, PassportRepository>()
                 .AddScoped<IDepartmentRepository, DepartmentRepository>()
                 .AddScoped<IEmployeeRepository, EmployeeRepository>();
         }

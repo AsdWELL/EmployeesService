@@ -1,3 +1,3 @@
-﻿INSERT INTO Companies ("Name", "Inn")
+﻿INSERT INTO "Companies" ("Name", "Inn")
 VALUES (@Name, @Inn)
 RETURNING "Id"

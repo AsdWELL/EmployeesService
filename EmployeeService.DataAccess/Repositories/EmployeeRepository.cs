@@ -34,7 +34,7 @@ namespace EmployeeService.DataAccess.Repositories
 
         public async Task<List<Employee>> GetEmployeesByCompanyIdAndDepartmentId(int companyId, int departmentId)
         {
-            return [.. await dbConnection.QueryAsync<Employee>(Sql.GetEmployeesByCompanyId,
+            return [.. await dbConnection.QueryAsync<Employee>(Sql.GetEmployeesByCompanyIdAndDepartmentId,
                 new { CompanyId = companyId, DepartmentId = departmentId })];
         }
 

@@ -22,6 +22,7 @@ namespace EmployeeService.Application.Mappers
         {
             var employee = new Employee
             {
+                Id = request.Id,
                 Name = request.Name,
                 Surname = request.Surname,
                 Phone = request.Phone
