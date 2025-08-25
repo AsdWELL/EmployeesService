@@ -1,4 +1,4 @@
-﻿namespace EmployeeService.Domain.Dto.Department
+﻿namespace EmployeeService.Application.Dto.Department
 {
     /// <summary>
     /// Модель запроса на добавление отдела

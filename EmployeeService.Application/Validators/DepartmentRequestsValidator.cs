@@ -1,5 +1,4 @@
 ﻿using EmployeeService.Application.Dto.Department;
-using EmployeeService.Domain.Dto.Department;
 
 namespace EmployeeService.Application.Validators
 {

@@ -341,9 +341,9 @@ namespace EmployeeService.DataAccess {
         ///	&quot;Name&quot; = COALESCE(@Name, &quot;Name&quot;),
         ///	&quot;Surname&quot; = COALESCE(@Surname, &quot;Surname&quot;),
         ///	&quot;Phone&quot; = COALESCE(@Phone, &quot;Phone&quot;),
-        ///	&quot;CompanyId&quot; = COALESCE(@CompanyId, &quot;CompanyId&quot;),
-        ///	&quot;PassportId&quot; = COALESCE(@PassportId, &quot;PassportId&quot;),
-        ///	&quot;DepartmentId&quot; = COALESCE(@DepartmentId, &quot;DepartmentId&quot;)
+        ///	&quot;CompanyId&quot; = CASE WHEN @CompanyId &gt; 0 THEN @CompanyId ELSE &quot;CompanyId&quot; END,
+        ///	&quot;PassportId&quot; = CASE WHEN @PassportId &gt; 0 THEN @PassportId ELSE &quot;PassportId&quot; END,
+        ///	&quot;DepartmentId&quot; = CASE WHEN @DepartmentId &gt; 0 THEN @DepartmentId ELSE &quot;DepartmentId&quot; END
         ///WHERE &quot;Id&quot; = @Id.
         /// </summary>
         internal static string UpdateEmployee {

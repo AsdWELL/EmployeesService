@@ -1,13 +1,18 @@
-namespace EmployeesService.Api
+using EmployeeService.DataAccess.Extensions;
+
+namespace EmployeeService.Api
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var app = builder.Build();
 
-            app.MapGet("/", () => "Hello World!");
+            builder.Services
+                .AddDatabase(builder.Configuration)
+                .AddRepositories();
+
+            var app = builder.Build();
 
             app.Run();
         }

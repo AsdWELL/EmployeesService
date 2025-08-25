@@ -1,6 +1,6 @@
 ﻿using EmployeeService.Application.Dto.Passport;
 
-namespace EmployeeService.Domain.Dto.Employee
+namespace EmployeeService.Application.Dto.Employee
 {
     /// <summary>
     /// Модель запроса на добавление сотрудника

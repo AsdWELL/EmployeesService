@@ -1,4 +1,5 @@
-﻿using EmployeeService.Domain.Dto.Employee;
+﻿using EmployeeService.Application.Dto.Employee;
+using EmployeeService.Application.Exceptions;
 
 namespace EmployeeService.Application.Validators
 {
@@ -24,6 +25,9 @@ namespace EmployeeService.Application.Validators
             ValidateEmployeeSurname(request.Surname);
 
             ValidateEmployeePhone(request.Phone);
+
+            if (request.Passport == null)
+                throw new InvalidFieldValueException("При создании сотрудника необходимо указать паспорт");
 
             request.Passport.ValidateAddRequest();
         }

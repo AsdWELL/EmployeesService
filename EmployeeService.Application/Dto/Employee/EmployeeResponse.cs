@@ -2,7 +2,7 @@
 using EmployeeService.Application.Dto.Department;
 using EmployeeService.Application.Dto.Passport;
 
-namespace EmployeeService.Domain.Dto.Employee
+namespace EmployeeService.Application.Dto.Employee
 {
     /// <summary>
     /// Модель получения информации о сотруднике
