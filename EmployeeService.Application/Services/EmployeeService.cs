@@ -3,33 +3,15 @@ using EmployeeService.Application.Exceptions.NotFoundExceptions;
 using EmployeeService.Application.Interfaces.Services;
 using EmployeeService.Application.Mappers;
 using EmployeeService.Application.Validators;
-using EmployeeService.DataAccess.Interfaces.Repositories;
-using EmployeeService.Domain.Entities;
+using EmployeeService.Application.Interfaces.Repositories;
 using System.Transactions;
 
 namespace EmployeeService.Application.Services
 {
     public class EmployeeService(
         IEmployeeRepository employeeRepository,
-        ICompanyRepository companyRepository,
-        IDepartmentRepository departmentRepository,
         IPassportRepository passportRepository) : IEmployeeService
     {
-        private async Task<EmployeeResponse> BuildEmployeeResponse(Employee employee) 
-        {
-            var company = await companyRepository.GetCompanyById(employee.CompanyId);
-            var passport = await passportRepository.GetPassportById(employee.PassportId);
-            var department = await departmentRepository.GetDepartmentById(employee.DepartmentId);
-
-            return employee.MapToDto(company, passport, department);
-        }
-
-        private async IAsyncEnumerable<EmployeeResponse> BuildEmployeeResponseList(List<Employee> employees)
-        {
-            foreach (var employee in employees)
-                yield return await BuildEmployeeResponse(employee);
-        }
-
         public async Task<int> AddEmployee(AddEmployeeRequest request)
         {
             request.ValidateAddRequest();
@@ -48,31 +30,25 @@ namespace EmployeeService.Application.Services
 
         public async Task<List<EmployeeResponse>> GetAllEmployees()
         {
-            var employees = await employeeRepository.GetAllEmployees();
-
-            return await BuildEmployeeResponseList(employees).ToListAsync();
+            return await employeeRepository.GetAllEmployees();
         }
 
         public async Task<EmployeeResponse> GetEmployeeById(int id)
         {
-            var employee = await employeeRepository.GetEmployeeById(id)
+            var employee = await employeeRepository.GetEmployeeDetailsById(id)
                 ?? throw new EmployeeNotFoundException(id);
 
-            return await BuildEmployeeResponse(employee);
+            return employee;
         }
 
         public async Task<List<EmployeeResponse>> GetEmployeesByCompanyId(int companyId)
         {
-            var employees = await employeeRepository.GetEmployeesByCompanyId(companyId);
-
-            return await BuildEmployeeResponseList(employees).ToListAsync();
+            return await employeeRepository.GetEmployeesByCompanyId(companyId);
         }
 
         public async Task<List<EmployeeResponse>> GetEmployeesByCompanyIdAndDepartmentId(int companyId, int departmentId)
         {
-            var employees = await employeeRepository.GetEmployeesByCompanyIdAndDepartmentId(companyId, departmentId);
-
-            return await BuildEmployeeResponseList(employees).ToListAsync();
+            return await employeeRepository.GetEmployeesByCompanyIdAndDepartmentId(companyId, departmentId);
         }
 
         public async Task UpdateEmployee(UpdateEmployeeRequest request)

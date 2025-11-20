@@ -160,6 +160,9 @@
   <data name="GetEmployeeById" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>SqlScripts\Employee\GetEmployeeById.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="GetEmployeeDetails" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>SqlScripts\Employee\GetEmployeeDetails.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="GetEmployeesByCompanyId" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>SqlScripts\Employee\GetEmployeesByCompanyId.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

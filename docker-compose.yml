@@ -1,0 +1,37 @@
+services:
+  postgres_employees:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=Users
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - pgdata_employees:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  employeesservice:
+    image: ${DOCKER_REGISTRY-}employeesserviceapi
+    build:
+      context: .
+      dockerfile: EmployeesService.Api/Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - SportNewsDB__ConnectionString=Host=postgres_employees;Port=5432;Database=Employees;Username=postgres;Password=admin;
+    depends_on:
+      postgres_employees:
+        condition: service_healthy
+      kafka-init:
+        condition: service_started
+
+volumes:
+  pgdata_employees:

@@ -169,14 +169,28 @@ namespace EmployeeService.DataAccess {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на SELECT &quot;Id&quot;,
-        ///	   &quot;Name&quot;,
-        ///	   &quot;Surname&quot;,
-        ///	   &quot;Phone&quot;,
-        ///	   &quot;CompanyId&quot;,
-        ///	   &quot;PassportId&quot;,
-        ///	   &quot;DepartmentId&quot;
-        ///FROM &quot;Employees&quot;.
+        ///   Ищет локализованную строку, похожую на SELECT &quot;Employees&quot;.&quot;Id&quot;,
+        ///	   &quot;Employees&quot;.&quot;Name&quot;,
+        ///	   &quot;Employees&quot;.&quot;Surname&quot;,
+        ///	   &quot;Employees&quot;.&quot;Phone&quot;,
+        ///	   &quot;Employees&quot;.&quot;CompanyId&quot;,
+        ///	   &quot;Employees&quot;.&quot;PassportId&quot;,
+        ///	   &quot;Employees&quot;.&quot;DepartmentId&quot;,
+        ///	   
+        ///	   &quot;Companies&quot;.&quot;Id&quot;,
+        ///	   &quot;Companies&quot;.&quot;Name&quot;,
+        ///	   &quot;Companies&quot;.&quot;Inn&quot;,
+        ///	   
+        ///	   &quot;Passports&quot;.&quot;Id&quot;,
+        ///	   &quot;Passports&quot;.&quot;Type&quot;,
+        ///	   &quot;Passports&quot;.&quot;Number&quot;,
+        ///
+        ///	   &quot;Departments&quot;.&quot;Id&quot;,
+        ///	   &quot;Departments&quot;.&quot;Name&quot;,
+        ///	   &quot;Departments&quot;.&quot;Phone&quot;
+        ///FROM &quot;Employees&quot;
+        ///JOIN &quot;Companies&quot; ON &quot;Companies&quot;.&quot;Id&quot; = &quot;Employees&quot;.&quot;CompanyId&quot;
+        ///JOIN &quot;Passpo [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string GetAllEmployees {
             get {
@@ -228,15 +242,56 @@ namespace EmployeeService.DataAccess {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на SELECT &quot;Id&quot;,
-        ///	   &quot;Name&quot;,
-        ///	   &quot;Surname&quot;,
-        ///	   &quot;Phone&quot;,
-        ///	   &quot;CompanyId&quot;,
-        ///	   &quot;PassportId&quot;,
-        ///	   &quot;DepartmentId&quot;
+        ///   Ищет локализованную строку, похожую на SELECT &quot;Employees&quot;.&quot;Id&quot;,
+        ///	   &quot;Employees&quot;.&quot;Name&quot;,
+        ///	   &quot;Employees&quot;.&quot;Surname&quot;,
+        ///	   &quot;Employees&quot;.&quot;Phone&quot;,
+        ///	   &quot;Employees&quot;.&quot;CompanyId&quot;,
+        ///	   &quot;Employees&quot;.&quot;PassportId&quot;,
+        ///	   &quot;Employees&quot;.&quot;DepartmentId&quot;,
+        ///	   
+        ///	   &quot;Companies&quot;.&quot;Id&quot;,
+        ///	   &quot;Companies&quot;.&quot;Name&quot;,
+        ///	   &quot;Companies&quot;.&quot;Inn&quot;,
+        ///	   
+        ///	   &quot;Passports&quot;.&quot;Id&quot;,
+        ///	   &quot;Passports&quot;.&quot;Type&quot;,
+        ///	   &quot;Passports&quot;.&quot;Number&quot;,
+        ///
+        ///	   &quot;Departments&quot;.&quot;Id&quot;,
+        ///	   &quot;Departments&quot;.&quot;Name&quot;,
+        ///	   &quot;Departments&quot;.&quot;Phone&quot;
         ///FROM &quot;Employees&quot;
-        ///WHERE &quot;CompanyId&quot; = @CompanyId.
+        ///JOIN &quot;Companies&quot; ON &quot;Companies&quot;.&quot;Id&quot; = &quot;Employees&quot;.&quot;Com [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string GetEmployeeDetails {
+            get {
+                return ResourceManager.GetString("GetEmployeeDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SELECT &quot;Employees&quot;.&quot;Id&quot;,
+        ///	   &quot;Employees&quot;.&quot;Name&quot;,
+        ///	   &quot;Employees&quot;.&quot;Surname&quot;,
+        ///	   &quot;Employees&quot;.&quot;Phone&quot;,
+        ///	   &quot;Employees&quot;.&quot;CompanyId&quot;,
+        ///	   &quot;Employees&quot;.&quot;PassportId&quot;,
+        ///	   &quot;Employees&quot;.&quot;DepartmentId&quot;,
+        ///	   
+        ///	   &quot;Companies&quot;.&quot;Id&quot;,
+        ///	   &quot;Companies&quot;.&quot;Name&quot;,
+        ///	   &quot;Companies&quot;.&quot;Inn&quot;,
+        ///	   
+        ///	   &quot;Passports&quot;.&quot;Id&quot;,
+        ///	   &quot;Passports&quot;.&quot;Type&quot;,
+        ///	   &quot;Passports&quot;.&quot;Number&quot;,
+        ///
+        ///	   &quot;Departments&quot;.&quot;Id&quot;,
+        ///	   &quot;Departments&quot;.&quot;Name&quot;,
+        ///	   &quot;Departments&quot;.&quot;Phone&quot;
+        ///FROM &quot;Employees&quot;
+        ///JOIN &quot;Companies&quot; ON &quot;Companies&quot;.&quot;Id&quot; = &quot;Employees&quot;.&quot;Com [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string GetEmployeesByCompanyId {
             get {
@@ -245,15 +300,27 @@ namespace EmployeeService.DataAccess {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на SELECT &quot;Id&quot;,
-        ///	   &quot;Name&quot;,
-        ///	   &quot;Surname&quot;,
-        ///	   &quot;Phone&quot;,
-        ///	   &quot;CompanyId&quot;,
-        ///	   &quot;PassportId&quot;,
-        ///	   &quot;DepartmentId&quot;
+        ///   Ищет локализованную строку, похожую на SELECT &quot;Employees&quot;.&quot;Id&quot;,
+        ///	   &quot;Employees&quot;.&quot;Name&quot;,
+        ///	   &quot;Employees&quot;.&quot;Surname&quot;,
+        ///	   &quot;Employees&quot;.&quot;Phone&quot;,
+        ///	   &quot;Employees&quot;.&quot;CompanyId&quot;,
+        ///	   &quot;Employees&quot;.&quot;PassportId&quot;,
+        ///	   &quot;Employees&quot;.&quot;DepartmentId&quot;,
+        ///	   
+        ///	   &quot;Companies&quot;.&quot;Id&quot;,
+        ///	   &quot;Companies&quot;.&quot;Name&quot;,
+        ///	   &quot;Companies&quot;.&quot;Inn&quot;,
+        ///	   
+        ///	   &quot;Passports&quot;.&quot;Id&quot;,
+        ///	   &quot;Passports&quot;.&quot;Type&quot;,
+        ///	   &quot;Passports&quot;.&quot;Number&quot;,
+        ///
+        ///	   &quot;Departments&quot;.&quot;Id&quot;,
+        ///	   &quot;Departments&quot;.&quot;Name&quot;,
+        ///	   &quot;Departments&quot;.&quot;Phone&quot;
         ///FROM &quot;Employees&quot;
-        ///WHERE &quot;CompanyId&quot; = @CompanyId AND &quot;DepartmentId&quot; = @DepartmentId.
+        ///JOIN &quot;Companies&quot; ON &quot;Companies&quot;.&quot;Id&quot; = &quot;Employees&quot;.&quot;Com [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string GetEmployeesByCompanyIdAndDepartmentId {
             get {

@@ -1,6 +1,6 @@
 ﻿using EmployeeService.Domain.Entities;
 
-namespace EmployeeService.DataAccess.Interfaces.Repositories
+namespace EmployeeService.Application.Interfaces.Repositories
 {
     public interface IPassportRepository
     {

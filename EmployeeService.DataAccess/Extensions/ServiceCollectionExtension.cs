@@ -1,5 +1,5 @@
 ﻿using DbUp;
-using EmployeeService.DataAccess.Interfaces.Repositories;
+using EmployeeService.Application.Interfaces.Repositories;
 using EmployeeService.DataAccess.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using EmployeeService.DataAccess.Interfaces.Repositories;
+using EmployeeService.Application.Interfaces.Repositories;
 using EmployeeService.Domain.Entities;
 using System.Data;
 

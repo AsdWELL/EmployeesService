@@ -3,7 +3,7 @@ using EmployeeService.Application.Exceptions.NotFoundExceptions;
 using EmployeeService.Application.Interfaces.Services;
 using EmployeeService.Application.Mappers;
 using EmployeeService.Application.Validators;
-using EmployeeService.DataAccess.Interfaces.Repositories;
+using EmployeeService.Application.Interfaces.Repositories;
 
 namespace EmployeeService.Application.Services
 {

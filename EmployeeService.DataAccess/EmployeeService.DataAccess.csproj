@@ -23,11 +23,12 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="dbup-postgresql" Version="6.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0" />
     <PackageReference Include="Npgsql" Version="9.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EmployeeService.Application\EmployeeService.Application.csproj" />
     <ProjectReference Include="..\EmployeeService.Domain\EmployeeService.Domain.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿SELECT "Employees"."Id",
+SELECT "Employees"."Id",
 	   "Employees"."Name",
 	   "Employees"."Surname",
 	   "Employees"."Phone",
@@ -21,4 +21,4 @@ FROM "Employees"
 JOIN "Companies" ON "Companies"."Id" = "Employees"."CompanyId"
 JOIN "Passports" ON "Passports"."Id" = "Employees"."PassportId"
 JOIN "Departments" ON "Departments"."Id" = "Employees"."DepartmentId"
-WHERE "Employees"."CompanyId" = @CompanyId
+WHERE "Employees"."Id" = @Id
